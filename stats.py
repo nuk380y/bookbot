@@ -8,3 +8,14 @@ def count_words(contents):
     return num_words
 
 
+def count_chars(contents):
+    standardized = contents.lower()
+    character_count = {}
+
+    for key in standardized:
+        if key in character_count:
+            character_count[key] += 1
+        else:
+            character_count[key] = 1
+
+    return character_count
