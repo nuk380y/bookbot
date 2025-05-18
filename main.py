@@ -1,4 +1,4 @@
-from stats import count_chars, count_words
+from stats import count_chars, count_words, list_readable, sort_by_count
 
 
 def get_book_text(filepath):
@@ -14,9 +14,19 @@ def main():
     doc_words = count_words(book_contents)
     doc_letters = count_chars(book_contents)
 
-    print(f"{doc_words} words found in the document")
-    for letter in doc_letters:
-        print(f"'{letter}': {doc_letters[letter]}")
+    # Manipulate compiled data
+    sorted_letters = list_readable(doc_letters)
+    sorted_letters.sort(reverse=True, key=sort_by_count)
+
+    # Print report to user
+    print(12 * "=", "BOOKBOT", 12 * "=")
+    print(f"Analyzing book found at {book_file}...")
+    print(11 * "-", "Word Count", 10 * "-")
+    print(f"Found {doc_words} total words")
+    print(9 * "-", "Character Count", 7 * "-")
+    for dictionary in sorted_letters:
+        print(f"{dictionary['char']}: {dictionary['num']}")
+    print(13 * "=", "END", 15 * "=")
 
 
 main()

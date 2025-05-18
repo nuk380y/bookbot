@@ -19,3 +19,20 @@ def count_chars(contents):
             character_count[key] = 1
 
     return character_count
+
+
+def sort_by_count(dict):
+    return dict["num"]
+
+
+def list_readable(character_count):
+    list_char_count = []
+
+    for key in character_count:
+        letter = {}
+
+        if str(key).isalpha():
+            letter = {"char": key, "num": character_count[key]}
+            list_char_count.append(letter)
+
+    return list_char_count
