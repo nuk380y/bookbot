@@ -1,3 +1,5 @@
+import sys
+
 from stats import count_chars, count_words, list_readable, sort_by_count
 
 
@@ -8,8 +10,18 @@ def get_book_text(filepath):
     return file_contents
 
 
+def check_args():
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        filename = sys.argv[1]
+        return filename
+
+
 def main():
-    book_file = "./books/frankenstein.txt"
+    # book_file = "./books/frankenstein.txt"
+    book_file = check_args()
     book_contents = get_book_text(book_file)
     doc_words = count_words(book_contents)
     doc_letters = count_chars(book_contents)
